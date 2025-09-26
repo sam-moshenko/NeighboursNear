@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 @main
 struct NeighboursNearApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(store: StoreOf<AppFeature>.init(initialState: .init(), reducer: {
+                AppFeature()
+            }))
         }
     }
 }
