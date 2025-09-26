@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 import ComposableArchitecture
 
 @Reducer
@@ -8,6 +8,7 @@ struct AppFeature {
         var announcings: [Announcing] = []
         var suggestions: [AnnouncingSuggestion] = []
         var transcript: String = ""
+        var photos: [String: UIImage] = [:]
     }
 
     enum Action {
@@ -56,7 +57,7 @@ struct AppFeature {
                 .cancel(id: "speech")
             )
 
-        case let .speechEvent(transcript, _isFinal):
+        case let .speechEvent(transcript, _):
             state.transcript = transcript
             return .none
 
